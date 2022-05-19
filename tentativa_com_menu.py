@@ -4,16 +4,17 @@ from turtle import clear
 
 
 tela_entrar = Tk()
-tela_entrar.geometry('833x400')
+tela_entrar.geometry('800x450+300+200')
+tela_entrar.resizable(width=0, height=0)
 
 note = ttk.Notebook(tela_entrar)
-note.place(x=5, y=0, width=833, height=400)
+note.place(x=5, y=0, width=790, height=440)
 
 #janela de envio de dados
-tela1 = Frame(tela_entrar,bg='#00BFFF', borderwidth= 2 )
+tela1 = Frame(tela_entrar,bg='#D8E1FF', borderwidth= 2, relief='sunken')
 note.add(tela1, text='tela de envio')
 
-tela2 = Frame(tela_entrar,bg='#00BFFF', borderwidth= 2 )
+tela2 = Frame(tela_entrar,bg='#D8E1FF', borderwidth= 2, relief='sunken')
 note.add(tela2, text='tela de relatório')
 
 #criação de arquivo txt que ira coletar os dados enviados do sistema e armazenar em um arquivo txt.
@@ -44,54 +45,54 @@ lista_pagamento = ['AVISTA','CARTÃO', 'PIX']    #lista das possiveis formas de 
 
 
 #texto nome
-nome = Label(tela1, text='NOME COMPLETO DO CLIENTE')
-nome.place(x=500, y=50)
+nome = Label(tela1, text='NOME COMPLETO DO CLIENTE',bg='#D8E1FF')
+nome.place(x=150, y=50)
 
 #caixa de entrada do nome
 caixa_nome = Entry(tela1, border=2)
-caixa_nome.place(x=700 , y=50, width = 250, )
+caixa_nome.place(x=400 , y=50, width = 250 )
 
 #Texto nome barbeiro
-nome_barbeiro = Label(tela1, text = 'NOME DO BARBEIRO')
-nome_barbeiro.place(x = 500, y = 100)
+nome_barbeiro = Label(tela1, text = 'NOME DO BARBEIRO',bg='#D8E1FF')
+nome_barbeiro.place(x = 150, y = 100)
 
 #caixa de entrada do nome barbeiro
-caixa_nome_barbeiro= Entry(tela1)
-caixa_nome_barbeiro.place(x=700 , y=100, width = 150)
+caixa_nome_barbeiro= Entry(tela1, border=2)
+caixa_nome_barbeiro.place(x=400 , y=100, width = 250 )
 
 #texto serviços
-lb_servicos = Label(tela1, text='SELECIONE O SERVIÇO REALIZADO')
-lb_servicos.place(x=500, y=150)
+lb_servicos = Label(tela1, text='SERVIÇO REALIZADO',bg='#D8E1FF')
+lb_servicos.place(x=150, y=150)
 
 #combo box de serviços
 cb_servicos = ttk.Combobox(tela1, values=lista_servicos, state='readionly')
 cb_servicos.set('SELECIONE')
-cb_servicos.place(x=700, y=150)
+cb_servicos.place(x=400, y=150)
 
 #texto valor
-valor = Label(tela1, text='Selecione o Valor do Serviço')
-valor.place(x=500, y=200)
+valor = Label(tela1, text='VALOR DO SERVIÇO',bg='#D8E1FF')
+valor.place(x=150, y=200)
 
 #caixa valor
-caixa_valor =Entry(tela1)
-caixa_valor.place(x=700, y=200)
+caixa_valor =Entry(tela1, border=2)
+caixa_valor.place(x=400, y=200)
 
 #texto onde pede para ser selecionado a forma de pagamento
-pagamento = Label(tela1, text='Marque a Forma de Pagamento')
-pagamento.place(x=500, y=250)
+pagamento = Label(tela1, text='FORMA DE PAGAMENTO',bg='#D8E1FF', font='calibri, 10')
+pagamento.place(x=150, y=250)
 
 cb_pagamento = ttk.Combobox(tela1, values = lista_pagamento, state = 'readionly')
 cb_pagamento.set('SELECIONE')
-cb_pagamento.place(x=700, y=250)
+cb_pagamento.place(x=400, y=250)
 
-b1=Button(tela1, text='confirmar', command = imprimir)
-b2=Button(tela1, text='ARMAZENAR',command = envio)
-b3=Button(tela1, text='LIMPAR', command = limpar)
-b4=Button(tela1, text='DADOS DO DIA')
-b1.place(x=600, y=300)
-b2.place(x=600, y=400)
-b3.place(x=750, y=300)
-b4.place(x=750, y=400)
+
+b1=Button(tela1, text='ARMAZENAR',command = envio)
+b2=Button(tela1, text='LIMPAR', command = limpar)
+b3=Button(tela1, text='DADOS DO DIA')
+
+b1.place(x=150, y=320, width = 130)
+b2.place(x=310, y=320, width = 100)
+b3.place(x=450, y=320, width = 130)
 
 
 
