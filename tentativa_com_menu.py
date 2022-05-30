@@ -108,25 +108,31 @@ caixa_fone_cad = Entry(tela2, border=2)
 caixa_fone_cad.place(x=550, y=1, width = 150)
 
 end_cad = Label(tela2, text='ENDEREÇO', bg='#D8E1FF')
-end_cad.place(x=1, y=40)
+end_cad.place(x=1, y=50)
 caixa_end_cad = Entry(tela2, border=2)
-caixa_end_cad.place(x=80, y=40, width = 150)
+caixa_end_cad.place(x=80, y=50, width = 350)
+
+comp_end = Label(tela2, text='Complemento', bg='#D8E1FF')
+comp_end.place(x=440, y=50)
+caixa_comp_end = Entry(tela2, border=2)
+caixa_comp_end.place(x=540, y=50,  width = 190)
 
 email_cad = Label(tela2, text='E-MAIL', bg='#D8E1FF')
-email_cad.place(x=250, y=40 )
+email_cad.place(x=1, y=100 )
 caixa_email_cad = Entry(tela2, border=2)
-caixa_email_cad.place(x=310, y=40, width = 250)
+caixa_email_cad.place(x=60, y=100, width = 350)
 
 lista_sexo =['MASCULINO', 'FEMININO', 'OUTROS']
 
 lb_sexo = Label(tela2, text='SEXO',bg='#D8E1FF')
-lb_sexo.place(x=580, y=40)
+lb_sexo.place(x=480, y=100)
 
 cb_sexo = ttk.Combobox(tela2, values=lista_sexo, state='readionly')
 cb_sexo.set('SELECIONE')
-cb_sexo.place(x=620, y=40)
+cb_sexo.place(x=530, y=100)
 
-
+line = Label(tela2, text='_'*900, bg = '#D8E1FF')
+line.place(x=1, y= 150)
 
 
 tela_entrar.mainloop()
