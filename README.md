@@ -1,4 +1,4 @@
-# projeto
+from cgitb import text
 from tkinter import*
 from tkinter import ttk
 from turtle import clear
@@ -18,16 +18,14 @@ note.add(tela1, text='tela de envio')
 tela2 = Frame(tela_entrar,bg='#D8E1FF', borderwidth= 2, relief='sunken')
 note.add(tela2, text='tela de cadastro')
 
-#dados da tela1
+#dados  armazenar e limpar da tela 1
 def armazenar(): 
     #função que ira coletar os dados gerais colocados no sistema e ira atribuir a outras variaveis que serão exibidas por meio de print 
-    
-    global nome_coleta,barbeiro_coleta,servico_coleta,valor_coleta,pag_coleta #global deixa a variável alocada em todo o cód
-    
+       
     nome_coleta = caixa_nome.get()
     barbeiro_coleta = caixa_nome_barbeiro.get()
     servico_coleta = cb_servicos.get()
-    valor_coleta = float(caixa_valor.get())
+    valor_coleta = caixa_valor.get()
     pag_coleta = cb_pagamento.get()
     with open('salvando_dados.txt', 'a') as arquivo:
         arquivo.write(' CLIENTE: {} \n BARBEIRO: {}\n SERVIÇO: {}\n VALOR: {} \n FORMA DE PAGAMENTO: {}\n'.format(nome_coleta, barbeiro_coleta, servico_coleta, valor_coleta, pag_coleta ))
@@ -38,6 +36,8 @@ def limpar(): #função que limpar as determinadas variáveis
     caixa_nome.delete(0,END)
     caixa_nome_barbeiro.delete(0,END)
     caixa_valor.delete(0,END)
+
+#dados de armazenar e limpar da tela 2
 
 lista_servicos =['BARBA', 'CORTE NA TESOURA', 'CORTE TESOURA E MÁQUINA']    #lista de serviços da barbearia
 lista_pagamento = ['AVISTA','CARTÃO', 'PIX']    #lista das possiveis formas de pagamento
@@ -92,6 +92,24 @@ b1.place(x=150, y=320, width = 130)
 b2.place(x=480, y=320, width = 100)
 
 #dados da tela2
+
+def armazenar2():
+    coleta_cod = caixa_cod_cad.get()
+    coleta_nome_cad = caixa_nome_cad.get()
+    coleta_fone = caixa_fone_cad.get()
+    coleta_sexo = cb_sexo.get()
+    coleta_end = caixa_end_cad.get()
+    coleta_n = caixa_n.get()
+    coleta_comp = caixa_comp_end.get()
+    coleta_cep = caixa_cep.get()
+    coleta_estado = lista_estado.get()
+    coleta_email = caixa_email_cad.get()
+    coleta_cargo = cb_cargo.get()
+    with open('DADOS DE CADASTRO.txt', 'a') as cadastro:
+        cadastro.write('\n CÓDIGO: {} \n NOME: {}\n TELEFONE: {}\n SEXO: {} \n ENDEREÇO: {}\n N° CASA: {} \n COMPLEMENTO: {} \n CEP: {} \n ESTADO: {}\n E-MAIL: {} \n CARGO: {} \n '.format(coleta_cod, coleta_nome_cad, coleta_fone, coleta_sexo, coleta_end, coleta_n, coleta_comp, coleta_cep, coleta_estado, coleta_email, coleta_cargo))
+        cadastro.close()
+        print('DADOS SALVOS')
+
 #cod do usuário
 cod_cad = Label(tela2, text='CÓDIGO', bg='#D8E1FF')
 cod_cad.place(x=1, y=1)
@@ -116,12 +134,6 @@ end_cad.place(x=1, y=50)
 caixa_end_cad = Entry(tela2, border=2)
 caixa_end_cad.place(x=80, y=50, width = 250)
 
-#campo de Email
-email_cad = Label(tela2, text='E-MAIL', bg='#D8E1FF')
-email_cad.place(x=1, y=140 )
-caixa_email_cad = Entry(tela2, border=2)
-caixa_email_cad.place(x=60, y=140, width = 350)
-
 #campo sobre sexo do usuário 
 lista_sexo =['MASCULINO', 'FEMININO', 'OUTROS']
 lb_sexo = Label(tela2, text='SEXO',bg='#D8E1FF')
@@ -145,30 +157,39 @@ caixa_comp_end.place(x=540, y=50,  width = 190)
 #cep
 cep = Label (tela2, text='CEP', bg='#D8E1FF')
 cep.place(x=1, y=100)
-caixa_cep = Entry
+caixa_cep = Entry (tela2, border=2)
+caixa_cep.place(x=50, y=100, width=100)
 
-
-
-
-
-
-
+#lista de estados
 lista_de_estados = ["Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará",
                     "Espirito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul",
                     "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro",
                     "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina",
                     "São Paulo", "Sergipe", "Tocantins"]
 
+estado = Label(tela2, text='ESTADO', bg='#D8E1FF')
+estado.place(x=210, y=100)
+lista_estado = ttk.Combobox(tela2, text='ESTADO', values=lista_de_estados, state = 'readionly')
+lista_estado.place(x=170, y=100,)
+lista_estado.set('SELECIONE')
+lista_estado.place(x=280, y=100)
+
+#campo de Email
+email_cad = Label(tela2, text='E-MAIL', bg='#D8E1FF')
+email_cad.place(x=1, y=140 )
+caixa_email_cad = Entry(tela2, border=2)
+caixa_email_cad.place(x=60, y=140, width = 350)
+
+#cargo
+lista_cargo = ['PROPRIETÁRIO', 'BARBEIRO', 'ATENDERNTE']
+cargo = Label(tela2, text='CARGO', bg='#D8E1FF')
+cargo.place(x=430, y= 140)
+cb_cargo = ttk.Combobox(tela2, text='CARGO', values=lista_cargo, state = 'readionly')
+cb_cargo.set('SELECIONE')
+cb_cargo.place(x=500, y=140)
 
 
 
-
-
-
-
-#linha
-line = Label(tela2, text='_'*900, bg = '#D8E1FF')
-line.place(x=1, y= 180)
-
-
+bt_arm = Button(tela2, text='ARMAZENAR', bg='#D8E1FF', command=armazenar2)
+bt_arm.place(x=140, y=290)
 tela_entrar.mainloop()

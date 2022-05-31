@@ -21,13 +21,11 @@ note.add(tela2, text='tela de cadastro')
 #dados  armazenar e limpar da tela 1
 def armazenar(): 
     #função que ira coletar os dados gerais colocados no sistema e ira atribuir a outras variaveis que serão exibidas por meio de print 
-    
-    global nome_coleta,barbeiro_coleta,servico_coleta,valor_coleta,pag_coleta #global deixa a variável alocada em todo o cód
-    
+       
     nome_coleta = caixa_nome.get()
     barbeiro_coleta = caixa_nome_barbeiro.get()
     servico_coleta = cb_servicos.get()
-    valor_coleta = float(caixa_valor.get())
+    valor_coleta = caixa_valor.get()
     pag_coleta = cb_pagamento.get()
     with open('salvando_dados.txt', 'a') as arquivo:
         arquivo.write(' CLIENTE: {} \n BARBEIRO: {}\n SERVIÇO: {}\n VALOR: {} \n FORMA DE PAGAMENTO: {}\n'.format(nome_coleta, barbeiro_coleta, servico_coleta, valor_coleta, pag_coleta ))
@@ -40,6 +38,7 @@ def limpar(): #função que limpar as determinadas variáveis
     caixa_valor.delete(0,END)
 
 #dados de armazenar e limpar da tela 2
+
 lista_servicos =['BARBA', 'CORTE NA TESOURA', 'CORTE TESOURA E MÁQUINA']    #lista de serviços da barbearia
 lista_pagamento = ['AVISTA','CARTÃO', 'PIX']    #lista das possiveis formas de pagamento
 
@@ -92,7 +91,37 @@ b2=Button(tela1, text='LIMPAR', command = limpar)
 b1.place(x=150, y=320, width = 130)
 b2.place(x=480, y=320, width = 100)
 
-#dados da tela2
+#dados e defs da tela2
+def armazenar2():
+    coleta_cod = caixa_cod_cad.get()
+    coleta_nome_cad = caixa_nome_cad.get()
+    coleta_fone = caixa_fone_cad.get()
+    coleta_sexo = cb_sexo.get()
+    coleta_end = caixa_end_cad.get()
+    coleta_n = caixa_n.get()
+    coleta_comp = caixa_comp_end.get()
+    coleta_cep = caixa_cep.get()
+    coleta_estado = lista_estado.get()
+    coleta_email = caixa_email_cad.get()
+    coleta_cargo = cb_cargo.get()
+    with open('DADOS DE CADASTRO.txt', 'a') as cadastro:
+        cadastro.write('\n CÓDIGO: {} \n NOME: {}\n TELEFONE: {}\n SEXO: {} \n ENDEREÇO: {}\n N° CASA: {} \n COMPLEMENTO: {} \n CEP: {} \n ESTADO: {}\n E-MAIL: {} \n CARGO: {} \n '.format(coleta_cod, coleta_nome_cad, coleta_fone, coleta_sexo, coleta_end, coleta_n, coleta_comp, coleta_cep, coleta_estado, coleta_email, coleta_cargo))
+        cadastro.close()
+        print('DADOS SALVOS')
+
+def limpar2(): #função que limpar as determinadas variáveis tela2
+    caixa_cod_cad.delete(0,END)
+    caixa_nome_cad.delete(0,END)
+    caixa_fone_cad.delete(0,END)
+    cb_sexo.delete(0,END)
+    caixa_end_cad.delete(0,END)
+    caixa_n.delete(0,END)
+    caixa_comp_end.delete(0,END)
+    caixa_cep.delete(0,END)
+    lista_estado.delete(0,END)
+    caixa_email_cad.delete(0,END)
+    cb_cargo.delete(0,END)
+
 #cod do usuário
 cod_cad = Label(tela2, text='CÓDIGO', bg='#D8E1FF')
 cod_cad.place(x=1, y=1)
@@ -116,14 +145,6 @@ end_cad = Label(tela2, text='ENDEREÇO', bg='#D8E1FF')
 end_cad.place(x=1, y=50)
 caixa_end_cad = Entry(tela2, border=2)
 caixa_end_cad.place(x=80, y=50, width = 250)
-
-#campo sobre sexo do usuário 
-lista_sexo =['MASCULINO', 'FEMININO', 'OUTROS']
-lb_sexo = Label(tela2, text='SEXO',bg='#D8E1FF')
-lb_sexo.place(x=480, y=100)
-cb_sexo = ttk.Combobox(tela2, values=lista_sexo, state='readionly')
-cb_sexo.set('SELECIONE')
-cb_sexo.place(x=530, y=100)
 
 #campo de numero da casa
 n = Label(tela2, text='N°', bg='#D8E1FF')
@@ -157,26 +178,33 @@ lista_estado.place(x=170, y=100,)
 lista_estado.set('SELECIONE')
 lista_estado.place(x=280, y=100)
 
+#campo sobre sexo do usuário 
+lista_sexo =['MASCULINO', 'FEMININO', 'OUTROS']
+lb_sexo = Label(tela2, text='SEXO',bg='#D8E1FF')
+lb_sexo.place(x=480, y=100)
+cb_sexo = ttk.Combobox(tela2, values=lista_sexo, state='readionly')
+cb_sexo.set('SELECIONE')
+cb_sexo.place(x=530, y=150)
+
 #campo de Email
 email_cad = Label(tela2, text='E-MAIL', bg='#D8E1FF')
-email_cad.place(x=1, y=140 )
+email_cad.place(x=20, y=200 )
 caixa_email_cad = Entry(tela2, border=2)
-caixa_email_cad.place(x=60, y=140, width = 350)
+caixa_email_cad.place(x=80, y=200, width = 350)
 
 #cargo
-lista_cargo = ['PROPRIETÁROP', 'BARBEIRO', 'ATENDERNTE']
+lista_cargo = ['PROPRIETÁRIO', 'BARBEIRO', 'ATENDERNTE']
 cargo = Label(tela2, text='CARGO', bg='#D8E1FF')
-cargo.place(x=430, y= 140)
+cargo.place(x=470, y= 200)
 cb_cargo = ttk.Combobox(tela2, text='CARGO', values=lista_cargo, state = 'readionly')
 cb_cargo.set('SELECIONE')
-cb_cargo.place(x=500, y=140)
+cb_cargo.place(x=530, y=200)
 
-
-
-
-#linha
-line = Label(tela2, text='_'*900, bg = '#D8E1FF')
-line.place(x=1, y= 180)
+#colocação de botões para armazenar dados e de limpar dados da tela 2
+bt_arm = Button(tela2, text='ARMAZENAR', bg='#D8E1FF', command=armazenar2)
+bt_arm.place(x=140, y=290, width = 130)
+bt_limp = Button(tela2, text='LIMPAR', bg='#D8E1FF', command=limpar2)
+bt_limp.place(x=480, y=290, width=100)
 
 
 tela_entrar.mainloop()
