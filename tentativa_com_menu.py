@@ -123,46 +123,46 @@ def limpar2(): #função que limpar as determinadas variáveis tela2
     cb_cargo.delete(0,END)
 
 #cod do usuário
-cod_cad = Label(tela2, text='CÓDIGO', bg='#D8E1FF')
-cod_cad.place(x=1, y=1)
+cod_cad = Label(tela2, text='CPF', bg='#D8E1FF')
+cod_cad.place(x=20, y=20)
 caixa_cod_cad = Entry(tela2, border=2)
-caixa_cod_cad.place(x=60, y=1, width = 50)
+caixa_cod_cad.place(x=70, y=20, width = 130)
 
 #campo de nome do cadastro
 nome_cad = Label(tela2, text='NOME', bg='#D8E1FF')
-nome_cad.place(x=150, y=1)
+nome_cad.place(x=200, y=20)
 caixa_nome_cad = Entry(tela2, border=2)
-caixa_nome_cad.place(x=200, y=1, width = 250)
+caixa_nome_cad.place(x=250, y=20, width = 240)
 
 #campo de telefone
 fone_cad = Label(tela2, text='TELEFONE',  bg='#D8E1FF')
-fone_cad.place(x=470, y=1)
+fone_cad.place(x=530, y=20)
 caixa_fone_cad = Entry(tela2, border=2)
-caixa_fone_cad.place(x=550, y=1, width = 150)
+caixa_fone_cad.place(x=600, y=20, width = 150)
 
 #campo de endereço
 end_cad = Label(tela2, text='ENDEREÇO', bg='#D8E1FF')
-end_cad.place(x=1, y=50)
+end_cad.place(x=1, y=80)
 caixa_end_cad = Entry(tela2, border=2)
-caixa_end_cad.place(x=80, y=50, width = 250)
+caixa_end_cad.place(x=80, y=80, width = 250)
 
 #campo de numero da casa
 n = Label(tela2, text='N°', bg='#D8E1FF')
-n.place(x=350, y=50)
+n.place(x=350, y=80)
 caixa_n = Entry(tela2, border=2)
-caixa_n.place(x=380, y=50, width=40)
+caixa_n.place(x=380, y=80, width=40)
 
 #campo de complemento
 comp_end = Label(tela2, text='Complemento', bg='#D8E1FF')
-comp_end.place(x=440, y=50)
+comp_end.place(x=440, y=80)
 caixa_comp_end = Entry(tela2, border=2)
-caixa_comp_end.place(x=540, y=50,  width = 190)
+caixa_comp_end.place(x=540, y=80,  width = 190)
 
 #cep
 cep = Label (tela2, text='CEP', bg='#D8E1FF')
-cep.place(x=1, y=100)
+cep.place(x=30, y=130)
 caixa_cep = Entry (tela2, border=2)
-caixa_cep.place(x=50, y=100, width=100)
+caixa_cep.place(x=80, y=130, width=100)
 
 #lista de estados
 lista_de_estados = ["Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará",
@@ -172,19 +172,18 @@ lista_de_estados = ["Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará",
                     "São Paulo", "Sergipe", "Tocantins"]
 
 estado = Label(tela2, text='ESTADO', bg='#D8E1FF')
-estado.place(x=210, y=100)
+estado.place(x=210, y=130)
 lista_estado = ttk.Combobox(tela2, text='ESTADO', values=lista_de_estados, state = 'readionly')
-lista_estado.place(x=170, y=100,)
 lista_estado.set('SELECIONE')
-lista_estado.place(x=280, y=100)
+lista_estado.place(x=280, y=130)
 
 #campo sobre sexo do usuário 
 lista_sexo =['MASCULINO', 'FEMININO', 'OUTROS']
 lb_sexo = Label(tela2, text='SEXO',bg='#D8E1FF')
-lb_sexo.place(x=480, y=100)
+lb_sexo.place(x=480, y=130)
 cb_sexo = ttk.Combobox(tela2, values=lista_sexo, state='readionly')
 cb_sexo.set('SELECIONE')
-cb_sexo.place(x=530, y=150)
+cb_sexo.place(x=530, y=130)
 
 #campo de Email
 email_cad = Label(tela2, text='E-MAIL', bg='#D8E1FF')
