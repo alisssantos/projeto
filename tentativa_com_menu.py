@@ -1,5 +1,3 @@
-from cgitb import text
-from re import L
 from tkinter import*
 from tkinter import ttk
 from turtle import clear
@@ -14,28 +12,17 @@ note = ttk.Notebook(tela_entrar)
 note.place(x=5, y=0, width=790, height=440)
 
 
-#janela de envio de dados
+#janela de envio de dados do dia
 tela1 = Frame(tela_entrar,bg='#D8E1FF', borderwidth= 2, relief='sunken')
 note.add(tela1, text='CONTROLE DIÁRIO')
 
+#janela de cadastro de colaborador
 tela2 = Frame(tela_entrar,bg='#D8E1FF', borderwidth= 2, relief='sunken')
 note.add(tela2, text='TELA DE CADASTRO')
 
-#dados da tela3 login e senha
-
-#janela de cadastro usuário
+#tela de cadastro clin]ente
 tela3 = Frame(tela_entrar, bg='#D8E1FF', borderwidth=2, relief='sunken')
 note.add(tela3, text='CADASTRO CLIENTE')
-
-login = Label(tela3, text='LOGIN', bg='#D8E1FF')
-login.place(x=100, y=150)
-caixa_login = Entry(tela3, border=2) 
-caixa_login.place(x=170, y=150, width=150)
-
-senha = Label(tela3, text='SENHA', bg='#D8E1FF')
-senha.place(x=380, y=150)
-caixa_senha = Entry(tela3, border=2, show='*')
-caixa_senha.place(x=480, y=150, width=150)
 
 #dados  armazenar e limpar da tela1
 def armazenar(): 
@@ -228,6 +215,120 @@ bt_arm = Button(tela2, text='ARMAZENAR', bg='#D8E1FF', command=armazenar2)
 bt_arm.place(x=140, y=290, width = 130)
 bt_limp = Button(tela2, text='LIMPAR', bg='#D8E1FF', command=limpar2)
 bt_limp.place(x=480, y=290, width=100)
+
+#dados e defs da tela3
+def armazenar3():
+    coleta_cod3 = caixa_cod_cpf3.get()
+    coleta_nome_cad3 = caixa_nome_cad3.get()
+    coleta_fone3 = caixa_fone_cad3.get()
+    coleta_sexo3 = cb_sexo3.get()
+    coleta_end3 = caixa_end_cad3.get()
+    coleta_n3 = caixa_n3.get()
+    coleta_comp3 = caixa_comp_end3.get()
+    coleta_cep3 = caixa_cep3.get()
+    coleta_estado3 = lista_estado3.get()
+    coleta_email3 = caixa_email_cad3.get()
+    coleta_cargo3 = cb_cargo3.get()
+    with open('DADOS DE CADASTRO.txt', 'a') as cadastro_cliente:
+        cadastro_cliente.write('\n CÓDIGO: {} \n NOME: {}\n TELEFONE: {}\n SEXO: {} \n ENDEREÇO: {}\n N° CASA: {} \n COMPLEMENTO: {} \n CEP: {} \n ESTADO: {}\n E-MAIL: {} \n CARGO: {} \n '.format(coleta_cod3, coleta_nome_cad3, coleta_fone3, coleta_sexo3, coleta_end3, coleta_n3, coleta_comp3, coleta_cep3, coleta_estado3, coleta_email3, coleta_cargo3))
+        cadastro_cliente.close()
+        print('DADOS SALVOS')
+
+def limpar3(): #função que limpar as determinadas variáveis tela2
+    caixa_cod_cpf3.delete(0,END)
+    caixa_nome_cad3.delete(0,END)
+    caixa_fone_cad3.delete(0,END)
+    cb_sexo3.delete(0,END)
+    caixa_end_cad3.delete(0,END)
+    caixa_n3.delete(0,END)
+    caixa_comp_end3.delete(0,END)
+    caixa_cep3.delete(0,END)
+    lista_estado3.delete(0,END)
+    caixa_email_cad3.delete(0,END)
+    cb_cargo3.delete(0,END)
+
+#cod do usuário
+cod_cpf3 = Label(tela3, text='CPF', bg='#D8E1FF')
+cod_cpf3.place(x=20, y=20) 
+caixa_cod_cpf3 = Entry(tela3, border=2)
+caixa_cod_cpf3.place(x=70, y=20, width = 130)
+
+#campo de nome do cadastro
+nome_cad3 = Label(tela3, text='NOME', bg='#D8E1FF')
+nome_cad3.place(x=200, y=20)
+caixa_nome_cad3 = Entry(tela3, border=2)
+caixa_nome_cad3.place(x=250, y=20, width = 240)
+
+#campo de telefone
+fone_cad3 = Label(tela3, text='TELEFONE',  bg='#D8E1FF')
+fone_cad3.place(x=530, y=20)
+caixa_fone_cad3 = Entry(tela3, border=2)
+caixa_fone_cad3.place(x=600, y=20, width = 150)
+
+#campo de endereço
+end_cad3 = Label(tela3, text='ENDEREÇO', bg='#D8E1FF')
+end_cad3.place(x=1, y=80)
+caixa_end_cad3 = Entry(tela3, border=2)
+caixa_end_cad3.place(x=80, y=80, width = 250)
+
+#campo de numero da casa
+n3 = Label(tela3, text='N°', bg='#D8E1FF')
+n3.place(x=350, y=80)
+caixa_n3 = Entry(tela3, border=2)
+caixa_n3.place(x=380, y=80, width=40)
+
+#campo de complemento
+comp_end3 = Label(tela3, text='Complemento', bg='#D8E1FF')
+comp_end3.place(x=440, y=80)
+caixa_comp_end3 = Entry(tela3, border=2)
+caixa_comp_end3.place(x=540, y=80,  width = 190)
+
+#cep
+cep3 = Label (tela3, text='CEP', bg='#D8E1FF')
+cep3.place(x=30, y=135)
+caixa_cep3 = Entry (tela3, border=2)
+caixa_cep3.place(x=80, y=135, width=100)
+
+#lista de estados
+lista_de_estados3 = ["Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará",
+                    "Espirito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul",
+                    "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro",
+                    "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina",
+                    "São Paulo", "Sergipe", "Tocantins"]
+
+estado3 = Label(tela3, text='ESTADO', bg='#D8E1FF')
+estado3.place(x=210, y=135)
+lista_estado3 = ttk.Combobox(tela3, text='ESTADO', values=lista_de_estados3, state = 'readionly')
+lista_estado3.set('SELECIONE')
+lista_estado3.place(x=280, y=135)
+
+#campo sobre sexo do usuário 
+lista_sexo3 =['MASCULINO', 'FEMININO', 'OUTROS']
+lb_sexo3 = Label(tela3, text='SEXO',bg='#D8E1FF')
+lb_sexo3.place(x=480, y=135)
+cb_sexo3 = ttk.Combobox(tela3, values=lista_sexo3, state='readionly')
+cb_sexo3.set('SELECIONE')
+cb_sexo3.place(x=530, y=135)
+
+#campo de Email
+email_cad3 = Label(tela3, text='E-MAIL', bg='#D8E1FF')
+email_cad3.place(x=20, y=200 )
+caixa_email_cad3 = Entry(tela3, border=2)
+caixa_email_cad3.place(x=80, y=200, width = 350)
+
+#cargo nesse caso só serve para passar o parametro de cliente
+lista_cargo3 = ['CLIENTE']
+cargo3 = Label(tela3, text='CARGO', bg='#D8E1FF')
+cargo3.place(x=470, y= 200)
+cb_cargo3 = ttk.Combobox(tela3, text='CARGO', values=lista_cargo3, state = 'readionly')
+cb_cargo3.set('SELECIONE')
+cb_cargo3.place(x=530, y=200)
+
+#colocação de botões para armazenar dados e de limpar dados da tela 2
+bt3_arm = Button(tela3, text='ARMAZENAR', bg='#D8E1FF', command=armazenar3)
+bt3_arm.place(x=140, y=290, width = 130)
+bt3_limp = Button(tela3, text='LIMPAR', bg='#D8E1FF', command=limpar3)
+bt3_limp.place(x=480, y=290, width=100)
 
 
 tela_entrar.mainloop()
