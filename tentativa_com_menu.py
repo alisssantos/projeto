@@ -1,4 +1,5 @@
 from cgitb import text
+from re import L
 from tkinter import*
 from tkinter import ttk
 from turtle import clear
@@ -7,28 +8,46 @@ tela_entrar = Tk()
 tela_entrar.geometry('800x450+300+100')
 tela_entrar.resizable(width=0, height=0)
 tela_entrar.title('BARBERSHOP')
+tela_entrar.iconbitmap('corte-de-barba.ico')
 
 note = ttk.Notebook(tela_entrar)
 note.place(x=5, y=0, width=790, height=440)
 
+
 #janela de envio de dados
 tela1 = Frame(tela_entrar,bg='#D8E1FF', borderwidth= 2, relief='sunken')
-note.add(tela1, text='tela de envio')
+note.add(tela1, text='CONTROLE DIÁRIO')
 
 tela2 = Frame(tela_entrar,bg='#D8E1FF', borderwidth= 2, relief='sunken')
-note.add(tela2, text='tela de cadastro')
+note.add(tela2, text='TELA DE CADASTRO')
 
-#dados  armazenar e limpar da tela 1
+#dados da tela3 login e senha
+
+#janela de cadastro usuário
+tela3 = Frame(tela_entrar, bg='#D8E1FF', borderwidth=2, relief='sunken')
+note.add(tela3, text='CADASTRO CLIENTE')
+
+login = Label(tela3, text='LOGIN', bg='#D8E1FF')
+login.place(x=100, y=150)
+caixa_login = Entry(tela3, border=2) 
+caixa_login.place(x=170, y=150, width=150)
+
+senha = Label(tela3, text='SENHA', bg='#D8E1FF')
+senha.place(x=380, y=150)
+caixa_senha = Entry(tela3, border=2, show='*')
+caixa_senha.place(x=480, y=150, width=150)
+
+#dados  armazenar e limpar da tela1
 def armazenar(): 
     #função que ira coletar os dados gerais colocados no sistema e ira atribuir a outras variaveis que serão exibidas por meio de print 
-       
+    cpf_coleta = caixa_cpf.get() 
     nome_coleta = caixa_nome.get()
     barbeiro_coleta = caixa_nome_barbeiro.get()
     servico_coleta = cb_servicos.get()
     valor_coleta = caixa_valor.get()
     pag_coleta = cb_pagamento.get()
     with open('salvando_dados.txt', 'a') as arquivo:
-        arquivo.write(' CLIENTE: {} \n BARBEIRO: {}\n SERVIÇO: {}\n VALOR: {} \n FORMA DE PAGAMENTO: {}\n'.format(nome_coleta, barbeiro_coleta, servico_coleta, valor_coleta, pag_coleta ))
+        arquivo.write('\n CPF: {} \n CLIENTE: {} \n BARBEIRO: {}\n SERVIÇO: {}\n VALOR: {} \n FORMA DE PAGAMENTO: {}\n'.format(cpf_coleta,nome_coleta, barbeiro_coleta, servico_coleta, valor_coleta, pag_coleta ))
         arquivo.close()
         print('DADOS SALVOS')
         
@@ -40,8 +59,13 @@ def limpar(): #função que limpar as determinadas variáveis
 #dados de armazenar e limpar da tela 2
 
 lista_servicos =['BARBA', 'CORTE NA TESOURA', 'CORTE TESOURA E MÁQUINA']    #lista de serviços da barbearia
-lista_pagamento = ['AVISTA','CARTÃO', 'PIX']    #lista das possiveis formas de pagamento
+lista_pagamento = ['A VISTA','CARTÃO', 'PIX']    #lista das possiveis formas de pagamento
 
+#campo de CPF
+cpf = Label(tela1, text='CPF', bg='#D8E1FF')
+cpf.place(x=200, y=10)
+caixa_cpf = Entry(tela1, border=2)
+caixa_cpf.place(x=400, y=10, width=250)
 
 #texto nome
 nome = Label(tela1, text='NOME COMPLETO DO CLIENTE',bg='#D8E1FF')
@@ -93,7 +117,7 @@ b2.place(x=480, y=320, width = 100)
 
 #dados e defs da tela2
 def armazenar2():
-    coleta_cod = caixa_cod_cad.get()
+    coleta_cod = caixa_cod_cpf.get()
     coleta_nome_cad = caixa_nome_cad.get()
     coleta_fone = caixa_fone_cad.get()
     coleta_sexo = cb_sexo.get()
@@ -110,7 +134,7 @@ def armazenar2():
         print('DADOS SALVOS')
 
 def limpar2(): #função que limpar as determinadas variáveis tela2
-    caixa_cod_cad.delete(0,END)
+    caixa_cod_cpf.delete(0,END)
     caixa_nome_cad.delete(0,END)
     caixa_fone_cad.delete(0,END)
     cb_sexo.delete(0,END)
@@ -123,10 +147,10 @@ def limpar2(): #função que limpar as determinadas variáveis tela2
     cb_cargo.delete(0,END)
 
 #cod do usuário
-cod_cad = Label(tela2, text='CPF', bg='#D8E1FF')
-cod_cad.place(x=20, y=20)
-caixa_cod_cad = Entry(tela2, border=2)
-caixa_cod_cad.place(x=70, y=20, width = 130)
+cod_cpf = Label(tela2, text='CPF', bg='#D8E1FF')
+cod_cpf.place(x=20, y=20) 
+caixa_cod_cpf = Entry(tela2, border=2)
+caixa_cod_cpf.place(x=70, y=20, width = 130)
 
 #campo de nome do cadastro
 nome_cad = Label(tela2, text='NOME', bg='#D8E1FF')
@@ -160,9 +184,9 @@ caixa_comp_end.place(x=540, y=80,  width = 190)
 
 #cep
 cep = Label (tela2, text='CEP', bg='#D8E1FF')
-cep.place(x=30, y=130)
+cep.place(x=30, y=135)
 caixa_cep = Entry (tela2, border=2)
-caixa_cep.place(x=80, y=130, width=100)
+caixa_cep.place(x=80, y=135, width=100)
 
 #lista de estados
 lista_de_estados = ["Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará",
@@ -172,18 +196,18 @@ lista_de_estados = ["Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará",
                     "São Paulo", "Sergipe", "Tocantins"]
 
 estado = Label(tela2, text='ESTADO', bg='#D8E1FF')
-estado.place(x=210, y=130)
+estado.place(x=210, y=135)
 lista_estado = ttk.Combobox(tela2, text='ESTADO', values=lista_de_estados, state = 'readionly')
 lista_estado.set('SELECIONE')
-lista_estado.place(x=280, y=130)
+lista_estado.place(x=280, y=135)
 
 #campo sobre sexo do usuário 
 lista_sexo =['MASCULINO', 'FEMININO', 'OUTROS']
 lb_sexo = Label(tela2, text='SEXO',bg='#D8E1FF')
-lb_sexo.place(x=480, y=130)
+lb_sexo.place(x=480, y=135)
 cb_sexo = ttk.Combobox(tela2, values=lista_sexo, state='readionly')
 cb_sexo.set('SELECIONE')
-cb_sexo.place(x=530, y=130)
+cb_sexo.place(x=530, y=135)
 
 #campo de Email
 email_cad = Label(tela2, text='E-MAIL', bg='#D8E1FF')
