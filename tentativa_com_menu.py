@@ -5,7 +5,7 @@ from turtle import clear
 tela_entrar = Tk()
 tela_entrar.geometry('800x450+300+100')
 tela_entrar.resizable(width=0, height=0)
-tela_entrar.title('BARBERSHOP')
+tela_entrar.title('VIKING BARBEARIA')
 tela_entrar.iconbitmap('corte-de-barba.ico')
 
 note = ttk.Notebook(tela_entrar)
@@ -18,7 +18,7 @@ note.add(tela1, text='CONTROLE DIÁRIO')
 
 #janela de cadastro de colaborador
 tela2 = Frame(tela_entrar,bg='#D8E1FF', borderwidth= 2, relief='sunken')
-note.add(tela2, text='TELA DE CADASTRO')
+note.add(tela2, text='CADASTRO DE CLABORADOR')
 
 #tela de cadastro clin]ente
 tela3 = Frame(tela_entrar, bg='#D8E1FF', borderwidth=2, relief='sunken')
@@ -30,22 +30,24 @@ def armazenar():
     cpf_coleta = caixa_cpf.get() 
     nome_coleta = caixa_nome.get()
     barbeiro_coleta = caixa_nome_barbeiro.get()
-    servico_coleta = cb_servicos.get()
+    servico_coleta = caixa_servico.get()
     valor_coleta = caixa_valor.get()
     pag_coleta = cb_pagamento.get()
-    with open('salvando_dados.txt', 'a') as arquivo:
-        arquivo.write('\n CPF: {} \n CLIENTE: {} \n BARBEIRO: {}\n SERVIÇO: {}\n VALOR: {} \n FORMA DE PAGAMENTO: {}\n'.format(cpf_coleta,nome_coleta, barbeiro_coleta, servico_coleta, valor_coleta, pag_coleta ))
+    linha = '-'*90
+    with open('DADOS DO CONTROLE DIÁRIO.txt', 'a') as arquivo:
+        arquivo.write('\n CPF: {} \n CLIENTE: {} \n BARBEIRO: {}\n SERVIÇO: {}\n VALOR: {} \n FORMA DE PAGAMENTO: {}\n {}'.format(cpf_coleta,nome_coleta, barbeiro_coleta, servico_coleta, valor_coleta, pag_coleta, linha ))
         arquivo.close()
         print('DADOS SALVOS')
         
 def limpar(): #função que limpar as determinadas variáveis
+    caixa_cpf.delete(0,END)
     caixa_nome.delete(0,END)
     caixa_nome_barbeiro.delete(0,END)
     caixa_valor.delete(0,END)
+    caixa_servico.delete(0,END)
 
 #dados de armazenar e limpar da tela 2
 
-lista_servicos =['BARBA', 'CORTE NA TESOURA', 'CORTE TESOURA E MÁQUINA']    #lista de serviços da barbearia
 lista_pagamento = ['A VISTA','CARTÃO', 'PIX']    #lista das possiveis formas de pagamento
 
 #campo de CPF
@@ -75,9 +77,8 @@ lb_servicos = Label(tela1, text='SERVIÇO REALIZADO',bg='#D8E1FF')
 lb_servicos.place(x=150, y=150)
 
 #combo box de serviços
-cb_servicos = ttk.Combobox(tela1, values=lista_servicos, state='readionly')
-cb_servicos.set('SELECIONE')
-cb_servicos.place(x=400, y=150)
+caixa_servico = Entry(tela1, border=2)
+caixa_servico.place(x=400 , y=150, width = 250 )
 
 #texto valor
 valor = Label(tela1, text='VALOR DO SERVIÇO',bg='#D8E1FF')
@@ -115,8 +116,9 @@ def armazenar2():
     coleta_estado = lista_estado.get()
     coleta_email = caixa_email_cad.get()
     coleta_cargo = cb_cargo.get()
-    with open('DADOS DE CADASTRO.txt', 'a') as cadastro:
-        cadastro.write('\n CÓDIGO: {} \n NOME: {}\n TELEFONE: {}\n SEXO: {} \n ENDEREÇO: {}\n N° CASA: {} \n COMPLEMENTO: {} \n CEP: {} \n ESTADO: {}\n E-MAIL: {} \n CARGO: {} \n '.format(coleta_cod, coleta_nome_cad, coleta_fone, coleta_sexo, coleta_end, coleta_n, coleta_comp, coleta_cep, coleta_estado, coleta_email, coleta_cargo))
+    linha2 = '-'*90
+    with open('DADOS DE CADASTRO COLABORADOR.txt', 'a') as cadastro:
+        cadastro.write('\n CÓDIGO: {} \n NOME: {}\n TELEFONE: {}\n SEXO: {} \n ENDEREÇO: {}\n N° CASA: {} \n COMPLEMENTO: {} \n CEP: {} \n ESTADO: {}\n E-MAIL: {} \n CARGO: {} \n {} '.format(coleta_cod, coleta_nome_cad, coleta_fone, coleta_sexo, coleta_end, coleta_n, coleta_comp, coleta_cep, coleta_estado, coleta_email, coleta_cargo, linha2))
         cadastro.close()
         print('DADOS SALVOS')
 
@@ -229,8 +231,9 @@ def armazenar3():
     coleta_estado3 = lista_estado3.get()
     coleta_email3 = caixa_email_cad3.get()
     coleta_cargo3 = cb_cargo3.get()
-    with open('DADOS DE CADASTRO.txt', 'a') as cadastro_cliente:
-        cadastro_cliente.write('\n CÓDIGO: {} \n NOME: {}\n TELEFONE: {}\n SEXO: {} \n ENDEREÇO: {}\n N° CASA: {} \n COMPLEMENTO: {} \n CEP: {} \n ESTADO: {}\n E-MAIL: {} \n CARGO: {} \n '.format(coleta_cod3, coleta_nome_cad3, coleta_fone3, coleta_sexo3, coleta_end3, coleta_n3, coleta_comp3, coleta_cep3, coleta_estado3, coleta_email3, coleta_cargo3))
+    linha3 = '-'*90
+    with open('DADOS DE CADASTRO CLIENTE.txt', 'a') as cadastro_cliente:
+        cadastro_cliente.write('\n CÓDIGO: {} \n NOME: {}\n TELEFONE: {}\n SEXO: {} \n ENDEREÇO: {}\n N° CASA: {} \n COMPLEMENTO: {} \n CEP: {} \n ESTADO: {}\n E-MAIL: {} \n CARGO: {} \n  {}'.format(coleta_cod3, coleta_nome_cad3, coleta_fone3, coleta_sexo3, coleta_end3, coleta_n3, coleta_comp3, coleta_cep3, coleta_estado3, coleta_email3, coleta_cargo3, linha3))
         cadastro_cliente.close()
         print('DADOS SALVOS')
 
