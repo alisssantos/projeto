@@ -135,15 +135,15 @@ def limpar2(): #função que limpar as determinadas variáveis tela2
 
 #cod do usuário
 cod_cpf = Label(tela2, text='CPF', bg='#D8E1FF')
-cod_cpf.place(x=20, y=20) 
+cod_cpf.place(x=30, y=20) 
 caixa_cod_cpf = Entry(tela2, border=2)
 caixa_cod_cpf.place(x=70, y=20, width = 130)
 
 #campo de nome do cadastro
 nome_cad = Label(tela2, text='NOME', bg='#D8E1FF')
-nome_cad.place(x=200, y=20)
+nome_cad.place(x=220, y=20)
 caixa_nome_cad = Entry(tela2, border=2)
-caixa_nome_cad.place(x=250, y=20, width = 240)
+caixa_nome_cad.place(x=270, y=20, width = 240)
 
 #campo de telefone
 fone_cad = Label(tela2, text='TELEFONE',  bg='#D8E1FF')
@@ -183,7 +183,7 @@ lista_de_estados = ["Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará",
                     "São Paulo", "Sergipe", "Tocantins"]
 
 estado = Label(tela2, text='ESTADO', bg='#D8E1FF')
-estado.place(x=210, y=135)
+estado.place(x=220, y=135)
 lista_estado = ttk.Combobox(tela2, text='ESTADO', values=lista_de_estados, state = 'readionly')
 lista_estado.set('SELECIONE')
 lista_estado.place(x=280, y=135)
@@ -191,14 +191,14 @@ lista_estado.place(x=280, y=135)
 #campo sobre sexo do usuário 
 lista_sexo =['MASCULINO', 'FEMININO', 'OUTROS']
 lb_sexo = Label(tela2, text='SEXO',bg='#D8E1FF')
-lb_sexo.place(x=480, y=135)
+lb_sexo.place(x=490, y=135)
 cb_sexo = ttk.Combobox(tela2, values=lista_sexo, state='readionly')
 cb_sexo.set('SELECIONE')
 cb_sexo.place(x=530, y=135)
 
 #campo de Email
 email_cad = Label(tela2, text='E-MAIL', bg='#D8E1FF')
-email_cad.place(x=20, y=200 )
+email_cad.place(x=30, y=200 )
 caixa_email_cad = Entry(tela2, border=2)
 caixa_email_cad.place(x=80, y=200, width = 350)
 
@@ -247,17 +247,17 @@ def limpar3(): #função que limpar as determinadas variáveis tela2
     caixa_email_cad3.delete(0,END)
     cb_cargo3.delete(0,END)
 
-#cod do usuário
+#cpf do usuário
 cod_cpf3 = Label(tela3, text='CPF', bg='#D8E1FF')
-cod_cpf3.place(x=20, y=20) 
+cod_cpf3.place(x=30, y=20) 
 caixa_cod_cpf3 = Entry(tela3, border=2)
 caixa_cod_cpf3.place(x=70, y=20, width = 130)
 
 #campo de nome do cadastro
 nome_cad3 = Label(tela3, text='NOME', bg='#D8E1FF')
-nome_cad3.place(x=200, y=20)
+nome_cad3.place(x=220, y=20)
 caixa_nome_cad3 = Entry(tela3, border=2)
-caixa_nome_cad3.place(x=250, y=20, width = 240)
+caixa_nome_cad3.place(x=270, y=20, width = 240)
 
 #campo de telefone
 fone_cad3 = Label(tela3, text='TELEFONE',  bg='#D8E1FF')
@@ -297,7 +297,7 @@ lista_de_estados3 = ["Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará",
                     "São Paulo", "Sergipe", "Tocantins"]
 
 estado3 = Label(tela3, text='ESTADO', bg='#D8E1FF')
-estado3.place(x=210, y=135)
+estado3.place(x=220, y=135)
 lista_estado3 = ttk.Combobox(tela3, text='ESTADO', values=lista_de_estados3, state = 'readionly')
 lista_estado3.set('SELECIONE')
 lista_estado3.place(x=280, y=135)
@@ -305,14 +305,14 @@ lista_estado3.place(x=280, y=135)
 #campo sobre sexo do usuário 
 lista_sexo3 =['MASCULINO', 'FEMININO', 'OUTROS']
 lb_sexo3 = Label(tela3, text='SEXO',bg='#D8E1FF')
-lb_sexo3.place(x=480, y=135)
+lb_sexo3.place(x=490, y=135)
 cb_sexo3 = ttk.Combobox(tela3, values=lista_sexo3, state='readionly')
 cb_sexo3.set('SELECIONE')
 cb_sexo3.place(x=530, y=135)
 
 #campo de Email
 email_cad3 = Label(tela3, text='E-MAIL', bg='#D8E1FF')
-email_cad3.place(x=20, y=200 )
+email_cad3.place(x=30, y=200 )
 caixa_email_cad3 = Entry(tela3, border=2)
 caixa_email_cad3.place(x=80, y=200, width = 350)
 
