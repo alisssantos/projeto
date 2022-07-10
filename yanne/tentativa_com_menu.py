@@ -6,7 +6,7 @@ tela_entrar = Tk()
 tela_entrar.geometry('800x450+300+100')
 tela_entrar.resizable(width=0, height=0)
 tela_entrar.title('BARBERSHOP')
-tela_entrar.iconbitmap('corte-de-barba.ico')
+#tela_entrar.iconbitmap('corte-de-barba.ico')
 
 note = ttk.Notebook(tela_entrar)
 note.place(x=5, y=0, width=790, height=440)

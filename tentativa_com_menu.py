@@ -20,7 +20,7 @@ note.add(tela1, text='CONTROLE DIÁRIO')
 tela2 = Frame(tela_entrar,bg='#D8E1FF', borderwidth= 2, relief='sunken')
 note.add(tela2, text='CADASTRO DE CLABORADOR')
 
-#tela de cadastro clin]ente
+#tela de cadastro cliente
 tela3 = Frame(tela_entrar, bg='#D8E1FF', borderwidth=2, relief='sunken')
 note.add(tela3, text='CADASTRO CLIENTE')
 
